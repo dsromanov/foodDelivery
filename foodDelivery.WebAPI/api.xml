@@ -16,5 +16,44 @@
             </summary>
             <param name="app"></param>
         </member>
+        <member name="M:foodDelivery.WebAPI.AppConfig.ServicesExtensions.ServicesExtensions.AddDbContextConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add serilog configuration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.UsersController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.#ctor(foodDelivery.Repository.IRepository{foodDelivery.Entity.Models.User})">
+            <summary>
+            Users controller
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.GetUsers">
+            <summary>
+            Get users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.DeleteUsers(foodDelivery.Entity.Models.User)">
+            <summary>
+            Delete users
+            </summary>
+            <param name="users"></param>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.PostUsers(foodDelivery.Entity.Models.User)">
+            <summary>
+            Post users
+            </summary>
+            <param name="users"></param>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.Updatesers(foodDelivery.Entity.Models.User)">
+            <summary>
+            Update users
+            </summary>
+            <param name="users"></param>
+        </member>
     </members>
 </doc>

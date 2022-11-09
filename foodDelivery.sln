@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foodDelivery.WebAPI", "foodDelivery.WebAPI\foodDelivery.WebAPI.csproj", "{DC4FAFAD-CD14-4059-B10A-27E30A953CEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foodDelivery.Repository", "foodDelivery.Repository\foodDelivery.Repository.csproj", "{F8EE4A84-481E-42A4-A350-242B055F553C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DC4FAFAD-CD14-4059-B10A-27E30A953CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC4FAFAD-CD14-4059-B10A-27E30A953CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC4FAFAD-CD14-4059-B10A-27E30A953CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EE4A84-481E-42A4-A350-242B055F553C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EE4A84-481E-42A4-A350-242B055F553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EE4A84-481E-42A4-A350-242B055F553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EE4A84-481E-42A4-A350-242B055F553C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

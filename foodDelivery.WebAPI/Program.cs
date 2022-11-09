@@ -1,14 +1,25 @@
 using foodDelivery.WebAPI.AppConfig.ServicesExtensions;
 using foodDelivery.WebAPI.AppConfig.ApplicationExtensions;
 using Serilog;
+using foodDelivery.Repository;
+using foodDelivery.Entity;
+using Microsoft.EntityFrameworkCore;
+
+var configuration = new ConfigurationBuilder()
+.AddJsonFile("appsettings.json", optional: false)
+.Build();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.AddSerilogConfig();
+builder.Services.AddDbContextConfiguration(configuration);
 builder.Services.AddVersioningConfiguration();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerConfiguration();
+
+//temporary
+builder.Services.AddScoped<DbContext, Context>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
@@ -21,12 +32,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
-app.Run();
 try
 {
     Log.Information("Application starting...");
