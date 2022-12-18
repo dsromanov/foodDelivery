@@ -1,9 +1,10 @@
-using foodDelivery.WebAPI.AppConfig.ServicesExtensions;
-using foodDelivery.WebAPI.AppConfig.ApplicationExtensions;
-using Serilog;
 using foodDelivery.Repository;
-using foodDelivery.Entity;
-using Microsoft.EntityFrameworkCore;
+using foodDelivery.Services;
+using foodDelivery.WebAPI.AppConfiguration;
+using foodDelivery.WebAPI.AppConfiguration.ServicesExtensions;
+using foodDelivery.WebAPI.AppConfiguration.ApplicationExtensions;
+using Serilog;
+
 
 var configuration = new ConfigurationBuilder()
 .AddJsonFile("appsettings.json", optional: false)
@@ -14,14 +15,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddSerilogConfig();
 builder.Services.AddDbContextConfiguration(configuration);
 builder.Services.AddVersioningConfiguration();
+builder.Services.AddMapperConfiguration();
 builder.Services.AddControllers();
-builder.Services.AddSwaggerConfiguration();
+builder.Services.AddSwaggerConfiguration(configuration);
+builder.Services.AddRepositoryConfiguration();
+builder.Services.AddBusinessLogicConfiguration();
+builder.Services.AddAuthorizationConfiguration(configuration); //1
 
-//temporary
-builder.Services.AddScoped<DbContext, Context>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
+
+await RepositoryInitializer.InitializeRepository(app);
 
 app.UseSerilogConfiguration();
 
@@ -32,7 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseAuthorizationConfiguration(); //2
+app.UseMiddleware(typeof(ExceptionsMiddleware));
 app.MapControllers();
 
 try

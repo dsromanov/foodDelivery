@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace foodDelivery.WebAPI.AppConfig.ServicesExtensions
+namespace foodDelivery.WebAPI.AppConfiguration.ServicesExtensions
 {
     public static partial class ServicesExtensions{
 

@@ -1,85 +1,101 @@
-using System.Globalization;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices;
-using foodDelivery.Entity.Models;
-using foodDelivery.Repository;
+using AutoMapper;
+using foodDelivery.Services.Abstract;
+using foodDelivery.Services.Models;
+using foodDelivery.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace foodDelivery.WebAPI.Controllers
 {
-    /// <summary>
-    /// </summary>
-    [ProducesResponseType(200)]
-    [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+/// <summary>
+/// </summary>
+[ProducesResponseType(200)]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
+[ApiController]
+public class UserController : ControllerBase
+{
+private readonly IUserService UserService;
+private readonly IMapper mapper;
+
+/// <summary>
+/// User controller
+/// </summary>
+public UserController(IUserService UserService,IMapper mapper)
+{
+this.UserService=UserService;
+this.mapper=mapper;
+}
+
+/// <summary>
+/// Get User by pages
+/// </summary>
+/// <returns></returns>
+[HttpGet]
+
+public IActionResult GetUsers([FromQuery] int limit = 20, [FromQuery] int offset = 0)
+{
+    var pageModel = UserService.GetUsers(limit, offset);
+
+    return Ok(mapper.Map < PageResponse < UserResponse>>(pageModel));
+}
+/// <summary>
+/// Delete User
+/// </summary>
+
+[HttpDelete]
+[Route("{id}")]
+public IActionResult DeleteUser([FromRoute] Guid id)
+{
+    try
     {
-        private IRepository<User> _repository;
-
-        /// <summary>
-        /// Users controller
-        /// </summary>
-        public UsersController(IRepository<User> repository)
-        {
-            _repository = repository;
-        }
-
-        
-        /// <summary>
-        /// Get users
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult GetUsers()
-        {
-            var myUser= new User()
-            {
-                Surname="Gusev",
-                Name="Ilya",
-                Email="am@asd",
-                PasswordHash="sdf343fss",
-                BirthDate=DateTime.Now,
-                IsBlocked=false
-            };
-           _repository.Save(myUser);
-           myUser.Email="34@ty5";
-           _repository.Save(myUser);
-            var users = _repository.GetAll();
-            return Ok(users);
-        }
-        
-        /// <summary>
-        /// Delete users
-        /// </summary>
-        /// <param name="users"></param>
-        [HttpDelete]
-        public IActionResult DeleteUsers(User user)
-        {
-            _repository.Delete(user);
-            return Ok();
-        }
-        /// <summary>
-        /// Post users
-        /// </summary>
-        /// <param name="users"></param>
-        [HttpPost]
-        public IActionResult PostUsers(User user)
-        {
-           var result= _repository.Save(user);
-            return Ok(result);
-        }
-        
-        /// <summary>
-        /// Update users
-        /// </summary>
-        /// <param name="users"></param>
-        [HttpPut]
-        public IActionResult Updatesers(User user)
-        {
-            return PostUsers(user);
-        }
-          
+        UserService.DeleteUser(id);
+        return Ok();
     }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.ToString());
+    }
+}
+/// <summary>
+/// Get User
+/// </summary>
+[HttpGet]
+[Route("{id}")]
+public IActionResult GetUser([FromRoute] Guid id)
+{
+    try
+    {
+        var UserModel = UserService.GetUser(id);
+        return Ok(mapper.Map<UserResponse>(UserModel));
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.ToString());
+    }
+}
+/// <summary>
+/// Update User
+/// </summary>
+[HttpPut]
+[Route("{id}")]
+public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UpdateUserRequest model)
+{
+    var validationResult = model.Validate();
+    if (!validationResult.IsValid)
+    {
+        return BadRequest(validationResult.Errors);
+    }
+    try
+    {
+        var resultModel = UserService.UpdateUser(id, mapper.Map<UpdateUserModel>(model));
+        return Ok(mapper.Map<UserResponse>(resultModel));
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.ToString());
+    }
+}
+
+}
 
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foodDelivery.WebAPI", "food
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foodDelivery.Repository", "foodDelivery.Repository\foodDelivery.Repository.csproj", "{F8EE4A84-481E-42A4-A350-242B055F553C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "foodDelivery.Service", "foodDelivery.Service\foodDelivery.Service.csproj", "{F5FA02F9-A83E-402C-8DA0-4CA8D6F509AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F8EE4A84-481E-42A4-A350-242B055F553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EE4A84-481E-42A4-A350-242B055F553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EE4A84-481E-42A4-A350-242B055F553C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FA02F9-A83E-402C-8DA0-4CA8D6F509AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FA02F9-A83E-402C-8DA0-4CA8D6F509AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FA02F9-A83E-402C-8DA0-4CA8D6F509AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FA02F9-A83E-402C-8DA0-4CA8D6F509AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

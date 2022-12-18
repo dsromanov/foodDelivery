@@ -1,6 +1,6 @@
 using Serilog;
 
-namespace foodDelivery.WebAPI.AppConfig.ServicesExtensions{
+namespace foodDelivery.WebAPI.AppConfiguration.ServicesExtensions{
     public static partial class ServicesExtensions{
 
         public static void AddSerilogConfig(this WebApplicationBuilder builder){

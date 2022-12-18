@@ -1,7 +1,7 @@
 using foodDelivery.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace foodDelivery.WebAPI.AppConfig.ServicesExtensions;
+namespace foodDelivery.WebAPI.AppConfiguration.ServicesExtensions;
 
 public static partial class ServicesExtensions
 {

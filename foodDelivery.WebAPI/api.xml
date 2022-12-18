@@ -4,56 +4,252 @@
         <name>foodDelivery.WebAPI</name>
     </assembly>
     <members>
-        <member name="M:foodDelivery.WebAPI.AppConfig.ApplicationExtensions.ApplicationExtensions.UseSerilogConfiguration(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ApplicationExtensions.AppExtensions.UseAuthorizationConfiguration(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Use serilog configuration
             </summary>
             <param name="app"></param>
         </member>
-        <member name="M:foodDelivery.WebAPI.AppConfig.ApplicationExtensions.ApplicationExtensions.UseSwaggerConfiguration(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ApplicationExtensions.ApplicationExtensions.UseSerilogConfiguration(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Use serilog configuration
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ApplicationExtensions.ApplicationExtensions.UseSwaggerConfiguration(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Use swagger configuration
             </summary>
             <param name="app"></param>
         </member>
-        <member name="M:foodDelivery.WebAPI.AppConfig.ServicesExtensions.ServicesExtensions.AddDbContextConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ServicesExtensions.ServicesExtensions.AddAuthorizationConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             Add serilog configuration
             </summary>
             <param name="builder"></param>
         </member>
-        <member name="T:foodDelivery.WebAPI.Controllers.UsersController">
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ServicesExtensions.ServicesExtensions.AddDbContextConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add serilog configuration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ServicesExtensions.ServicesExtensions.AddMapperConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add serilog configuration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:foodDelivery.WebAPI.AppConfiguration.ServicesExtensions.ServicesExtensions.AddSwaggerConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add swagger settings
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.AdminController">
             <summary>
             </summary>
         </member>
-        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.#ctor(foodDelivery.Repository.IRepository{foodDelivery.Entity.Models.User})">
+        <member name="M:foodDelivery.WebAPI.Controllers.AdminController.#ctor(foodDelivery.Services.Abstract.IAdminService,AutoMapper.IMapper)">
             <summary>
-            Users controller
+            admin controller
             </summary>
         </member>
-        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.GetUsers">
+        <!-- Badly formed XML comment ignored for member "M:foodDelivery.WebAPI.Controllers.AdminController.CreateAdmin(foodDelivery.Services.Models.AdminModel)" -->
+        <member name="M:foodDelivery.WebAPI.Controllers.AdminController.GetAdmins(System.Int32,System.Int32)">
             <summary>
-            Get users
+            Get admin by pages
             </summary>
             <returns></returns>
         </member>
-        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.DeleteUsers(foodDelivery.Entity.Models.User)">
+        <member name="M:foodDelivery.WebAPI.Controllers.AdminController.DeleteAdmin(System.Guid)">
             <summary>
-            Delete users
+            Delete admin
             </summary>
-            <param name="users"></param>
         </member>
-        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.PostUsers(foodDelivery.Entity.Models.User)">
+        <member name="M:foodDelivery.WebAPI.Controllers.AdminController.GetAdmin(System.Guid)">
             <summary>
-            Post users
+            Get admin
             </summary>
-            <param name="users"></param>
         </member>
-        <member name="M:foodDelivery.WebAPI.Controllers.UsersController.Updatesers(foodDelivery.Entity.Models.User)">
+        <member name="M:foodDelivery.WebAPI.Controllers.AdminController.UpdateAdmin(System.Guid,foodDelivery.WebAPI.Models.UpdateAdminRequest)">
             <summary>
-            Update users
+            Update admin
             </summary>
-            <param name="users"></param>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.CityController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.CityController.#ctor(foodDelivery.Services.Abstract.ICityService,AutoMapper.IMapper)">
+            <summary>
+            City controller
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:foodDelivery.WebAPI.Controllers.CityController.CreateCity(foodDelivery.Services.Models.CityModel)" -->
+        <member name="M:foodDelivery.WebAPI.Controllers.CityController.GetCitys(System.Int32,System.Int32)">
+            <summary>
+            Get City by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.CityController.DeleteCity(System.Guid)">
+            <summary>
+            Delete City
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.CityController.GetCity(System.Guid)">
+            <summary>
+            Get City
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.CityController.UpdateCity(System.Guid,foodDelivery.WebAPI.Models.UpdateCityRequest)">
+            <summary>
+            Update City
+            </summary>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.FacilityController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.#ctor(foodDelivery.Services.Abstract.IFacilityService,AutoMapper.IMapper)">
+            <summary>
+            Facility controller
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.CreateFacility(System.Guid,System.Guid,foodDelivery.Services.Models.FacilityModel)">
+            <summary>
+            create Facility
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.GetFacilitys(System.Int32,System.Int32)">
+            <summary>
+            Get Facility by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.DeleteFacility(System.Guid)">
+            <summary>
+            Delete Facility
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.GetFacility(System.Guid)">
+            <summary>
+            Get Facility
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityController.UpdateFacility(System.Guid,foodDelivery.WebAPI.Models.UpdateFacilityRequest)">
+            <summary>
+            Update Facility
+            </summary>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.FacilityToUserController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.#ctor(foodDelivery.Services.Abstract.IFacilityToUserService,AutoMapper.IMapper)">
+            <summary>
+            FacilityToUser controller
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.CreateFacilityToUser(System.Guid,System.Guid,foodDelivery.Services.Models.FacilityToUserModel)">
+            <summary>
+            create Facility
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.GetFacilityToUsers(System.Int32,System.Int32)">
+            <summary>
+            Get FacilityToUser by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.DeleteFacilityToUser(System.Guid)">
+            <summary>
+            Delete FacilityToUser
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.GetFacilityToUser(System.Guid)">
+            <summary>
+            Get FacilityToUser
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.FacilityToUserController.UpdateFacilityToUser(System.Guid,foodDelivery.WebAPI.Models.UpdateFacilityToUserRequest)">
+            <summary>
+            Update FacilityToUser
+            </summary>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.TypesController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.TypesController.#ctor(foodDelivery.Services.Abstract.ITypesService,AutoMapper.IMapper)">
+            <summary>
+            Types controller
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:foodDelivery.WebAPI.Controllers.TypesController.CreateTypes(foodDelivery.Services.Models.TypesModel)" -->
+        <member name="M:foodDelivery.WebAPI.Controllers.TypesController.GetTypess(System.Int32,System.Int32)">
+            <summary>
+            Get Types by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.TypesController.DeleteTypes(System.Guid)">
+            <summary>
+            Delete Types
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.TypesController.GetTypes(System.Guid)">
+            <summary>
+            Get Types
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.TypesController.UpdateTypes(System.Guid,foodDelivery.WebAPI.Models.UpdateTypesRequest)">
+            <summary>
+            Update Types
+            </summary>
+        </member>
+        <member name="T:foodDelivery.WebAPI.Controllers.UserController">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UserController.#ctor(foodDelivery.Services.Abstract.IUserService,AutoMapper.IMapper)">
+            <summary>
+            User controller
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UserController.GetUsers(System.Int32,System.Int32)">
+            <summary>
+            Get User by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UserController.DeleteUser(System.Guid)">
+            <summary>
+            Delete User
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UserController.GetUser(System.Guid)">
+            <summary>
+            Get User
+            </summary>
+        </member>
+        <member name="M:foodDelivery.WebAPI.Controllers.UserController.UpdateUser(System.Guid,foodDelivery.WebAPI.Models.UpdateUserRequest)">
+            <summary>
+            Update User
+            </summary>
+        </member>
+        <member name="T:CityForum.WebApi.Controllers.AuthController">
+            <summary>
+            Auth endpoints
+            </summary>
+        </member>
+        <member name="M:CityForum.WebApi.Controllers.AuthController.#ctor(foodDelivery.Services.Abstract.IAuthService,AutoMapper.IMapper)">
+            <summary>
+            Auth controller
+            </summary>
         </member>
     </members>
 </doc>

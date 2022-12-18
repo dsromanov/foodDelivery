@@ -1,20 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using foodDelivery.Entity.Models;
 
 namespace foodDelivery.Entity;
 public class Context : DbContext
-{
-    public DbSet<User> Users { get; set; }
-    public DbSet<City> Cities { get; set; }
-    public DbSet<Facility> Facilities { get; set; }
-    public DbSet<Admin> Admins { get; set; }
-    public DbSet<Types> Types { get; set; }
-    public DbSet<FacilityToUser> FacilityToUsers { get; set; }
- 
+{ 
     public Context(DbContextOptions<Context> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        base.OnModelCreating(builder);
         #region Types
 
         builder.Entity<Types>().ToTable("types");
@@ -44,6 +40,12 @@ public class Context : DbContext
                                     .WithMany(x => x.Users)
                                     .HasForeignKey(x => x.CityId)
                                     .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<IdentityUserClaim<Guid>>().ToTable("user_claims");
+        builder.Entity<IdentityUserLogin<Guid>>().ToTable("user_logins");
+        builder.Entity<IdentityUserToken<Guid>>().ToTable("user_tokens");
+        builder.Entity<UserRole>().ToTable("user_roles");
+        builder.Entity<IdentityRoleClaim<Guid>>().ToTable("user_role_claims");
+        builder.Entity<IdentityUserRole<Guid>>().ToTable("user_role_owners");
 
         #endregion
 
